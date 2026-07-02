@@ -1,12 +1,12 @@
 from fastapi.testclient import TestClient
 from app.main import app
-from app.tasks import tasks
+from app.tasks import reset
 
 client = TestClient(app)
 
 
 def setup_function():
-    tasks.clear()
+    reset()
 
 
 def test_get_tasks_empty():
