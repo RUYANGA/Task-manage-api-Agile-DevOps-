@@ -28,7 +28,7 @@ def create_task(task: TaskCreate):
     new_task = Task(
         id=len(tasks) + 1,
         title=task.title,
-        completed=False,
+        completed=task.completed if task.completed is not None else False,
     )
     tasks.append(new_task)
     logger.info(f"Task created: id={new_task.id}, title={new_task.title}")
@@ -46,7 +46,9 @@ def update_task(task_id: int, updated: TaskCreate):
     for task in tasks:
         if task.id == task_id:
             task.title = updated.title
-            logger.info(f"Task updated: id={task_id}, new_title={updated.title}")
+            if updated.completed is not None:
+                task.completed = updated.completed
+            logger.info(f"Task updated: id={task_id}, title={task.title}, completed={task.completed}")
             return task
     logger.error(f"Task not found: id={task_id}")
     raise HTTPException(status_code=404, detail="Task not found")

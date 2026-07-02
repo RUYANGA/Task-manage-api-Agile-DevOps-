@@ -128,6 +128,8 @@ Content-Type: application/json
 }
 ```
 
+Optional: `"completed": true` to create a task already marked done.
+
 Response `200`:
 ```json
 {
@@ -163,6 +165,8 @@ Content-Type: application/json
 }
 ```
 
+Can also update completion status: `{"title": "Task", "completed": true}`
+
 Response `200`: updated task object
 Response `404`: `{"detail": "Task not found"}`
 
@@ -181,9 +185,9 @@ Response `404`: `{"detail": "Task not found"}`
 
 | ID | User Story | Priority | Estimate | Acceptance Criteria |
 |----|-----------|----------|----------|-------------------|
-| US-001 | Create task | High | 2 pts | `POST /tasks` with a `title` creates a task and returns it with `id` and `completed=false`. |
+| US-001 | Create task | High | 2 pts | `POST /tasks` with a `title` creates a task and returns it with `id` and `completed=false`. Optionally accepts `completed` to set initial status. |
 | US-002 | View all tasks | High | 1 pt | `GET /tasks` returns list of all tasks (empty array if none). |
-| US-003 | Update task | High | 2 pts | `PUT /tasks/{id}` updates the title. Returns 404 if not found. |
+| US-003 | Update task | High | 2 pts | `PUT /tasks/{id}` updates the title and optionally `completed`. Returns 404 if not found. |
 | US-004 | Delete task | High | 1 pt | `DELETE /tasks/{id}` removes the task. Returns 404 if not found. |
 | US-005 | Health check | Medium | 1 pt | `GET /health` returns `{"status": "healthy"}`. |
 

@@ -9,7 +9,7 @@ def setup_function():
     reset()
 
 
-def test_update_task():
+def test_update_task_title():
 
     client.post("/tasks", json={"title": "Old task"})
 
@@ -17,3 +17,19 @@ def test_update_task():
 
     assert res.status_code == 200
     assert res.json()["title"] == "New task"
+
+
+def test_update_task_completed():
+
+    client.post("/tasks", json={"title": "Task"})
+
+    res = client.put("/tasks/1", json={"title": "Task", "completed": True})
+
+    assert res.status_code == 200
+    assert res.json()["completed"] is True
+
+
+def test_update_task_not_found():
+    res = client.put("/tasks/999", json={"title": "Ghost"})
+    assert res.status_code == 404
+    assert res.json()["detail"] == "Task not found"

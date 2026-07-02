@@ -8,3 +8,4 @@ class Task(BaseModel):
 
 class TaskCreate(BaseModel):
     title: str
+    completed: bool | None = None
