@@ -26,3 +26,7 @@ def create_task(task: TaskCreate):
     logger.info("Task created")
 
     return new_task
+
+@app.get("/tasks")
+def get_tasks():
+    return tasks
