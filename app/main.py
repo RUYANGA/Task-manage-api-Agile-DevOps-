@@ -10,3 +10,19 @@ app = FastAPI()
 @app.get("/")
 def home():
     return {"message": "Task API"}
+
+
+@app.post("/tasks")
+def create_task(task: TaskCreate):
+
+    new_task = Task(
+        id=len(tasks) + 1,
+        title=task.title,
+        completed=False
+    )
+
+    tasks.append(new_task)
+
+    logger.info("Task created")
+
+    return new_task
