@@ -1,7 +1,7 @@
 [project]
 name = "task-management-api"
 version = "0.1.0"
-description = ""
+description = "Task Management REST API built with FastAPI — Agile & DevOps practice project"
 authors = [
     { name = "RUYANGA", email = "ruyangam15@gmail.com" }
 ]
