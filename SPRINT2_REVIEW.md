@@ -11,15 +11,16 @@ Complete remaining CRUD operations and add monitoring/logging.
 | US-004 | Delete task | ✅ Done |
 
 ## Demo
-- `PUT /tasks/{id}` — updates task title, returns 404 if not found
+- `PUT /tasks/{id}` — updates task title and/or `completed` status, returns 404 if not found
 - `DELETE /tasks/{id}` — removes task, returns 404 if not found
+- `POST /tasks` — optionally accepts `completed` field to set initial status
 - Improved logging: all endpoints log operations with timestamps and details
 - Validation: missing/invalid fields return 422
 
 ## Evidence
-- 8 unit tests (3 for create, 1 for delete, 2 for get, 1 for health, 1 for update)
+- 12 unit tests (5 for create, 3 for update, 2 for get, 1 for delete, 1 for health)
 - CI pipeline continues to pass
-- Full CRUD coverage achieved
+- Full CRUD coverage including `completed` field support achieved
 
 ---
 

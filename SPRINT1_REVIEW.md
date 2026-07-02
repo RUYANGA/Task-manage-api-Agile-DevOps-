@@ -18,7 +18,7 @@ Deliver core CRUD foundation and CI pipeline.
 - Swagger UI available at `/docs`
 
 ## Evidence
-- All 8 unit tests pass
+- Unit tests for create task and health check pass
 - CI pipeline runs tests on every push to `main`
 - Commit history shows iterative development
 
