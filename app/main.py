@@ -11,6 +11,9 @@ app = FastAPI()
 def home():
     return {"message": "Task API"}
 
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
 
 @app.post("/tasks")
 def create_task(task: TaskCreate):
